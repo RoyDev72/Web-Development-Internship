@@ -2,12 +2,9 @@ let currentPage = 1;
 let perPage = 10;
 let totalRepositories = 0;
 
-// The function to get the repository topics
 async function getRepositoryTopics(owner, repo) {
-    // The URL of the REST API endpoint
     const url = `https://api.github.com/repos/${owner}/${repo}/topics`;
 
-    // The options for the fetch request
     const options = {
         headers: {
             Accept: 'application/vnd.github.v3+json',
@@ -15,13 +12,10 @@ async function getRepositoryTopics(owner, repo) {
         }
     };
 
-    // The fetch request
     const response = await fetch(url, options);
 
-    // The data object contains the topics array
     const data = await response.json();
 
-    // Return the topics array or an empty array if there is an error
     return data.names || [];
 }
 
@@ -30,14 +24,12 @@ async function getUserDetails() {
     const userDetailsContainer = document.getElementById("userDetails");
     const loader = document.getElementById("loader");
 
-    // Clear previous results
     userDetailsContainer.innerHTML = "";
     document.getElementById("repositoriesList").innerHTML = "";
 
     try {
         loader.style.display = "block";
 
-        // Fetch user details
         const userResponse = await fetch(`https://api.github.com/users/${username}`);
 
         if (!userResponse.ok) {
@@ -46,7 +38,6 @@ async function getUserDetails() {
 
         const user = await userResponse.json();
 
-        // Display user details
         userDetailsContainer.innerHTML = `
             <h2>${user.login}</h2>
             <img src="${user.avatar_url}" alt="Profile Picture" class="profile-picture">
@@ -54,7 +45,6 @@ async function getUserDetails() {
             <div id="socialLinks" class="social-links"></div>
         `;
 
-        // Display social media links
         const socialLinksContainer = document.getElementById("socialLinks");
 
         if (user.twitter_username) {
