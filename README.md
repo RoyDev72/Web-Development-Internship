@@ -9,7 +9,8 @@ This web application allows users to view a GitHub user's details, including bas
 - Display basic user details: username, profile picture, and location.
 - Display social media links (e.g., Twitter) if available.
 - Paginate and filter the user's public repositories.
-- Display topics associated with each repository.
+
+Note:- Display Repo topic is mising in this project I'm not able to fetch the problem I did implemented github personal acces token but not worked. 
 
 ## Technologies Used
 
